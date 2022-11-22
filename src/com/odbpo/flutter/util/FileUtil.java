@@ -53,7 +53,9 @@ public class FileUtil {
             if (child.isDirectory()) {
                 recursiveGetAllFiles(list, child);
             } else {
-                list.add(child);
+                if (!child.getName().startsWith(".")) {
+                    list.add(child);
+                }
             }
         }
     }
