@@ -1,0 +1,48 @@
+<idea-plugin>
+    <id>com.odbpo.flutter.plugin</id>
+    <name>FlutterPlugin</name>
+    <version>1.0.0</version>
+    <vendor email="zhongshiyuan@hunshehui.cn" url="https://github.com/Xie-Yin">XieYin</vendor>
+
+    <description><![CDATA[
+      <p>Flutter开发代码自动生成插件</p>
+      <ul>
+        <li>自动生成图片资源类</li>
+        <li>自动生成字体资源类</li>
+        <li>自动生成路由名称(以文件名page结尾的dart文件)类</li>
+      </ul>
+      <p><a href="https://github.com/Xie-Yin/FlutterPlugin">使用介绍</a></p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+     <br>published version 1.0.0</br>
+    ]]>
+    </change-notes>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <group id="XyActionGroup" class="com.odbpo.flutter.group.XyActionGroup">
+            <group text="XieYin" popup="true">
+                <action id="xy.build.assets" text="Build Assets" description="Generate module assets resource"
+                        class="com.odbpo.flutter.action.AssetsAction">
+                    <keyboard-shortcut keymap="$default" first-keystroke="alt m"/>
+                </action>
+                <action id="xy.build.route" text="Build Route" description="Generate module route resource"
+                        class="com.odbpo.flutter.action.RouteAction">
+                    <keyboard-shortcut keymap="$default" first-keystroke="alt r"/>
+                </action>
+            </group>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </group>
+    </actions>
+</idea-plugin>
