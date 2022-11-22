@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.odbpo.flutter.plugin</id>
-    <name>FlutterPlugin</name>
+    <name>XyFlutterPlugin</name>
     <version>1.0.0</version>
     <vendor email="zhongshiyuan@hunshehui.cn" url="https://github.com/Xie-Yin">XieYin</vendor>
 
