@@ -35,7 +35,7 @@
             <group text="XieYin" popup="true">
                 <action id="xy.build.assets" text="Build Assets" description="Generate module assets resource"
                         class="com.odbpo.flutter.action.AssetsAction">
-                    <keyboard-shortcut keymap="$default" first-keystroke="alt m"/>
+                    <keyboard-shortcut keymap="$default" first-keystroke="alt a"/>
                 </action>
                 <action id="xy.build.route" text="Build Routes" description="Generate module route resource"
                         class="com.odbpo.flutter.action.RouteAction">
