@@ -37,7 +37,7 @@
                         class="com.odbpo.flutter.action.AssetsAction">
                     <keyboard-shortcut keymap="$default" first-keystroke="alt m"/>
                 </action>
-                <action id="xy.build.route" text="Build Route" description="Generate module route resource"
+                <action id="xy.build.route" text="Build Routes" description="Generate module route resource"
                         class="com.odbpo.flutter.action.RouteAction">
                     <keyboard-shortcut keymap="$default" first-keystroke="alt r"/>
                 </action>
