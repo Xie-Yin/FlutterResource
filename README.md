@@ -1,7 +1,17 @@
-### Flutter路由、图片、字体路径等资源生成插件(AS、IDEA)
+### 一、Flutter路由、图片、字体路径等资源生成插件(AS、IDEA)
 <img src="https://github.com/Xie-Yin/FlutterPlugin/blob/main/imgs/plugin.png" width="750" >
 
-### 使用
+### 二、功能介绍
+- Build Assets
+    获取项目`assets/`目录下的所有文件，生成`*_assets.dart`辅助类。
+    - 注意：2.0x，3.0x格式的辨率文件夹下的文件和`iconfont`相关的文件会被忽略
+- Build Routes
+    获取项目`lib/`目录下所有文件名以`*page.dart`结尾的文件，生成`*_route.dart`辅助类。
+- Build Iconfont
+    获取项目`pubspec.yaml`中配置的`flutter:fonts`图标字体，生成`*_icon.dart`辅助类。
+    - 注意：配置的fonts图标字体文件必须以`*iconfont.ttf`结尾，同时在`ttf`文件旁边还需要放置`iconfont.json`文件。（在iconfont网站下载的时候都会有这些）
+
+### 三、使用
 - [下载插件安装](https://github.com/Xie-Yin/FlutterPlugin/releases)
 
 - 在`pubspec.yaml`可以配置`xie_yin`字段，如下：
