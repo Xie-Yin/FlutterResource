@@ -41,6 +41,10 @@
                         class="com.odbpo.flutter.action.RouteAction">
                     <keyboard-shortcut keymap="$default" first-keystroke="alt r"/>
                 </action>
+                <action id="xy.build.iconfont" text="Build Iconfont" description="Generate module iconfont resource"
+                        class="com.odbpo.flutter.action.IconfontAction">
+                    <keyboard-shortcut keymap="$default" first-keystroke="alt c"/>
+                </action>
             </group>
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </group>

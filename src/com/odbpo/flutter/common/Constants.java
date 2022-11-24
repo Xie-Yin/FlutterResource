@@ -22,4 +22,8 @@ public interface Constants {
 
     String PUBSPEC_FILE = "pubspec.yaml";
 
+    String ICONFONT_TTF = "iconfont.ttf";
+
+    String ICONFONT_JSON = "iconfont.json";
+
 }

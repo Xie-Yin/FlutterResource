@@ -120,7 +120,7 @@ public class FileUtil {
     /**
      * 解析yaml文件
      */
-    private static Map<String, Object> parserYaml(Project project) {
+    public static Map<String, Object> parserYaml(Project project) {
         try {
             Yaml yaml = new Yaml();
             FileInputStream inputStream = new FileInputStream(project.getBasePath() + File.separator + Constants.PUBSPEC_FILE);
