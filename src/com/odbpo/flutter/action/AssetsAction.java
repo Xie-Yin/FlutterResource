@@ -38,9 +38,9 @@ public class AssetsAction extends AnAction {
             NotificationUtil.showNotify("No assets file need to be generate！");
             return;
         }
-        //需要过滤一下分辨率文件夹（1.5x，2.0x，3.0x）不进行生成
+        //需要过滤一下分辨率文件夹（1.5x，2.0x，3.0x）和iconfont相关的 不进行生成
         assetsFiles = assetsFiles.stream().filter(file -> {
-            String pattern = "\\d.\\dx";
+            String pattern = "\\d.\\dx|iconfont";
             Matcher matcher = Pattern.compile(pattern).matcher(file.getPath());
             return !matcher.find();
         }).collect(Collectors.toList());
