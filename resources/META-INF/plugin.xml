@@ -8,8 +8,8 @@
       <p>Flutter开发代码自动生成插件</p>
       <ul>
         <li>自动生成图片资源类</li>
-        <li>自动生成字体资源类</li>
-        <li>自动生成路由名称(以文件名page结尾的dart文件)类</li>
+        <li>自动生成Iconfont资源类</li>
+        <li>自动生成路由名称类(以文件名page结尾的dart文件)</li>
       </ul>
       <p><a href="https://github.com/Xie-Yin/FlutterPlugin">使用介绍</a></p>
     ]]></description>
