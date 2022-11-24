@@ -98,7 +98,7 @@ public class IconfontAction extends AnAction {
             IconfontJsonBean jsonBean = gson.fromJson(json, IconfontJsonBean.class);
             for (IconfontJsonBean.GlyphsBean glyph : jsonBean.getGlyphs()) {
                 codes.append("  static const IconData ").append(StringUtil.toCamelCase(glyph.getName(), false));
-                codes.append(" = const IconData(0x").append(glyph.getUnicode()).append(", fontFamily: '").append(bean.getFamily());
+                codes.append(" = IconData(0x").append(glyph.getUnicode()).append(", fontFamily: '").append(bean.getFamily());
                 codes.append("');").append("\n");
             }
         }
