@@ -19,7 +19,7 @@ public class NotificationUtil {
      * 发送一个通知
      */
     public static void showNotify(String message) {
-        NotificationGroup notificationGroup = new NotificationGroup("XyFlutterPlugin",
+        NotificationGroup notificationGroup = new NotificationGroup("FlutterPlugin",
                 NotificationDisplayType.BALLOON, false);
         Notification notification = notificationGroup.createNotification(message, MessageType.INFO);
         Notifications.Bus.notify(notification);

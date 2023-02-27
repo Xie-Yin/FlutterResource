@@ -21,10 +21,10 @@
 ### 三、使用
 - [下载插件安装](https://github.com/Xie-Yin/FlutterPlugin/releases)
 
-- 在`pubspec.yaml`可以配置`xie_yin`字段，如下：
+- 在`pubspec.yaml`可以配置`flutter_res`字段，如下：
 
 ```yaml
-xie_yin:
+flutter_res:
   # 当前模块是否是子模块，对生成的图片资源路径有影响
   isModule: false
   # 配置生成的文件名和类名

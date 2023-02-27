@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
  */
 
 
-public class XyActionGroup extends DefaultActionGroup {
+public class FlutterResActionGroup extends DefaultActionGroup {
     @Override
     public void update(@NotNull AnActionEvent e) {
         e.getPresentation().setEnabledAndVisible(true);

@@ -112,7 +112,7 @@ public class FileUtil {
     private static Object getYamlSetting(Project project, String key) {
         Map<String, Object> map = parserYaml(project);
         if (map == null) return null;
-        Object xieYin = map.get("xie_yin");
+        Object xieYin = map.get("flutter_res");
         if (xieYin == null) return null;
         return ((Map<String, Object>) xieYin).get(key);
     }
