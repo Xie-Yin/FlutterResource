@@ -1,4 +1,4 @@
-### 一、Flutter路由、图片、字体路径等资源生成插件(AS、IDEA)
+### 一、Flutter路由、图片、字体路径等资源生成插件(Android Studio、IDEA...)
 <img src="https://github.com/Xie-Yin/FlutterPlugin/blob/main/imgs/plugin.png" width="750" >
 
 ### 二、功能介绍
@@ -19,7 +19,7 @@
 - 注意：配置的fonts图标字体文件必须以`*iconfont.ttf`结尾，同时在`ttf`文件旁边还需要放置`iconfont.json`文件。（在iconfont网站下载的时候都会有这些）
 
 ### 三、使用
-- [下载插件安装](https://github.com/Xie-Yin/FlutterPlugin/releases)
+- [插件市场安装](https://plugins.jetbrains.com/plugin/22595-flutterresource)
 
 - 在`pubspec.yaml`可以配置`flutter_res`字段，如下：
 
