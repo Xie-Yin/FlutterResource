@@ -39,12 +39,12 @@ public class IconfontAction extends AnAction {
         Map<String, Object> map = FileUtil.parserYaml(project);
         Map<String, Object> flutter = (Map<String, Object>) map.get("flutter");
         if (flutter == null) {
-            NotificationUtil.showNotify("No iconfont file need to be generate！");
+            NotificationUtil.showNotify(project, "No iconfont file need to be generate！");
             return;
         }
         List<Map<String, Object>> fonts = (List<Map<String, Object>>) flutter.get("fonts");
         if (fonts == null) {
-            NotificationUtil.showNotify("No iconfont file need to be generate！");
+            NotificationUtil.showNotify(project, "No iconfont file need to be generate！");
             return;
         }
         List<IconfontBean> iconfontList = new ArrayList<>();
@@ -57,7 +57,7 @@ public class IconfontAction extends AnAction {
             }
         }
         generateIconfont(project, iconfontList);
-        NotificationUtil.showNotify("Generate Iconfont successful！");
+        NotificationUtil.showNotify(project, "Generate Iconfont successful！");
     }
 
     /**

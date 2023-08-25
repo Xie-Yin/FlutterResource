@@ -36,7 +36,7 @@ public class FileUtil {
     public static Collection<VirtualFile> getDirFile(Project project, String dir) {
         VirtualFile libFile = ProjectUtil.guessProjectDir(project).findChild(dir);
         if (libFile == null || !libFile.exists()) {
-            NotificationUtil.showNotify("Error: [" + dir + "] directory not found!");
+            NotificationUtil.showNotify(project, "Error: [" + dir + "] directory not found!");
             return null;
         }
         Collection<VirtualFile> files = new ArrayList<>();

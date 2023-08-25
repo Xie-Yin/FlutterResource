@@ -35,7 +35,7 @@ public class AssetsAction extends AnAction {
         if (project == null) return;
         Collection<VirtualFile> assetsFiles = FileUtil.getDirFile(project, Constants.ASSETS_DIR);
         if (assetsFiles == null) {
-            NotificationUtil.showNotify("No assets file need to be generate！");
+            NotificationUtil.showNotify(project, "No assets file need to be generate！");
             return;
         }
         //需要过滤一下分辨率文件夹（1.5x，2.0x，3.0x）和iconfont相关的 不进行生成
@@ -45,11 +45,11 @@ public class AssetsAction extends AnAction {
             return !matcher.find();
         }).collect(Collectors.toList());
         if (assetsFiles.isEmpty()) {
-            NotificationUtil.showNotify("No assets file need to be generate！");
+            NotificationUtil.showNotify(project, "No assets file need to be generate！");
             return;
         }
         generateAssets(project, assetsFiles);
-        NotificationUtil.showNotify("Generate assets successful！");
+        NotificationUtil.showNotify(project, "Generate assets successful！");
     }
 
     /**

@@ -32,18 +32,18 @@ public class RouteAction extends AnAction {
         if (project == null) return;
         Collection<VirtualFile> dartFiles = FileUtil.getDirFile(project, Constants.LIB_DIR);
         if (dartFiles == null) {
-            NotificationUtil.showNotify("No *page file need to be generate！");
+            NotificationUtil.showNotify(project, "No *page file need to be generate！");
             return;
         }
         ///必须是*page.dart文件
         dartFiles = dartFiles.stream().filter(file -> file.getName().endsWith(Constants.PAGE_DART_FILE_TYPE)).collect(Collectors.toList());
         //没有需要生成的路由文件
         if (dartFiles.isEmpty()) {
-            NotificationUtil.showNotify("No *page file need to be generate！");
+            NotificationUtil.showNotify(project, "No *page file need to be generate！");
             return;
         }
         generateRoute(project, dartFiles);
-        NotificationUtil.showNotify("Generate route successful！");
+        NotificationUtil.showNotify(project, "Generate route successful！");
     }
 
     /**
