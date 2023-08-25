@@ -2,16 +2,16 @@
     <id>com.odbpo.flutter.plugin</id>
     <name>FlutterResource</name>
     <version>1.3.0</version>
-    <vendor email="azhon.cn@gmail.com" url="https://github.com/Xie-Yin/FlutterResource">XieYin</vendor>
+    <vendor email="azhon.cn@gmail.com" url="https://github.com/Xie-Yin/FlutterResource">azhon</vendor>
 
     <description><![CDATA[
-      <p>Flutter开发代码自动生成插件</p>
+      <p>Flutter assets resource plugin.</p>
       <ul>
-        <li>自动生成图片资源类</li>
-        <li>自动生成Iconfont资源类</li>
-        <li>自动生成路由名称类(以文件名page结尾的dart文件)</li>
+        <li>Generate assets image resources</li>
+        <li>Generate assets Iconfont resources</li>
+        <li>Generate routes, the fileName end of *page.dart</li>
       </ul>
-      <p><a href="https://github.com/Xie-Yin/FlutterPlugin">使用介绍</a></p>
+      <p><a href="https://github.com/Xie-Yin/FlutterPlugin">Instructions for use</a></p>
     ]]></description>
 
     <change-notes><![CDATA[
