@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.odbpo.flutter.plugin</id>
     <name>FlutterResource</name>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <vendor email="azhon.cn@gmail.com" url="https://github.com/Xie-Yin/FlutterResource">azhon</vendor>
 
     <description><![CDATA[
@@ -15,7 +15,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
-     <br>opt notification</br>
+     <br>add create bloc files</br>
     ]]>
     </change-notes>
 
