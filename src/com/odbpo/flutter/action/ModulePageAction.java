@@ -8,7 +8,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.ThrowableRunnable;
-import com.odbpo.flutter.bean.BlocBean;
 import com.odbpo.flutter.bean.ModulePageBean;
 import com.odbpo.flutter.util.FileUtil;
 
@@ -107,7 +106,7 @@ public class ModulePageAction extends AnAction {
                 .append(bean.getPageClsName()).append("State createState() => ").append(bean.getPageClsName()).append("State();").append("\n")
                 .append("}").append("\n\n")
 
-                .append(bean.getPageClsName()).append("State extends CommonPage<").append(bean.getPageClsName()).append(">\n with NavigatorPageLifecycleMixin {\n\n")
+                .append("class ").append(bean.getPageClsName()).append("State extends CommonPage<").append(bean.getPageClsName()).append(">\n with NavigatorPageLifecycleMixin {\n\n")
                 .append("  @override").append("\n")
                 .append("  Widget baseBuild(BuildContext context) => SizedBox();").append("\n\n")
 
@@ -128,6 +127,7 @@ public class ModulePageAction extends AnAction {
 
     private String generateApiCode(ModulePageBean bean) {
         //import
+        StringBuilder sb = new StringBuilder();
         sb.append("import 'package:todo_flutter/todo_flutter.dart';").append("\n\n")
                 //class name
                 .append("class ").append(bean.getApiClsName()).append("{").append("\n")
