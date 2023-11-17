@@ -86,7 +86,7 @@ public class ModulePageAction extends AnAction {
                 .append("  static ").append(bean.getRouteClsName()).append("? _instance;").append("\n\n")
                 //override
                 .append("  @override").append("\n")
-                .append("  String get name => '").append(bean.getInputName()).append("';").append("\n\n")
+                .append("  String get name => '").append(bean.getInputName()).append("';").append("\n")
                 .append("}").append("\n");
         return sb.toString();
     }
@@ -97,6 +97,7 @@ public class ModulePageAction extends AnAction {
         sb.append("import 'package:flutter_thrio/flutter_thrio.dart';").append("\n")
                 .append("import 'package:flutter/cupertino.dart';").append("\n")
                 .append("import 'package:flutter/material.dart';").append("\n")
+                .append("import 'package:todo_flutter/todo_flutter.dart';").append("\n")
                 .append("import 'package:请自行在此输入项目名称/components/common_page.dart';").append("\n\n")
                 //class name
                 .append("class ").append(bean.getPageClsName()).append(" extends NavigatorStatefulPage {").append("\n")
@@ -130,18 +131,17 @@ public class ModulePageAction extends AnAction {
         //import
         StringBuilder sb = new StringBuilder();
         sb.append("import 'package:todo_flutter/todo_flutter.dart';").append("\n\n")
-                .append("import 'package:请自行在此输入项目名称/service/network/api_provider.dart';")
+                .append("import 'package:请自行在此输入项目名称/service/network/api_provider.dart';\n\n")
                 //class name
                 .append("class ").append(bean.getApiClsName()).append("{").append("\n")
                 .append("//在此填写api url 示例：\n").append("  static const String dataDic = '/e-system/dict/data/type/';").append("\n")
                 .append("}").append("\n\n")
-
                 .append("class ExampleRequest extends ApiRequest<Map<String, dynamic>> {\n")
                 .append("  ExampleRequest(Map<String, dynamic>? params) : super(params);\n\n")
                 .append("  @override\n")
                 .append("  RequestMethod get method => RequestMethod.get;\n\n")
                 .append("  @override\n")
-                .append("  String get url => ChangePhoneApi.dataDic;\n")
+                .append("  String get url =>").append(bean.getApiClsName()).append(".dataDic;\n")
                 .append("}").append("\n");
         return sb.toString();
     }
