@@ -56,5 +56,10 @@
                 description="Create bloc、event、state dart file.">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
         </action>
+        <action id="CreateModulePage" class="com.odbpo.flutter.action.ModulePageAction" text="Module Page File"
+            icon="AllIcons.Actions.Annotate"
+            description="Create module、page、route、api dart file.">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
+        </action>
     </actions>
 </idea-plugin>
