@@ -97,8 +97,7 @@ public class ModulePageAction extends AnAction {
         sb.append("import 'package:flutter_thrio/flutter_thrio.dart';").append("\n")
                 .append("import 'package:flutter/cupertino.dart';").append("\n")
                 .append("import 'package:flutter/material.dart';").append("\n")
-                .append("import 'package:todo_flutter/todo_flutter.dart';").append("\n")
-                .append("import 'package:请自行在此输入项目名称/components/common_page.dart';").append("\n\n")
+                .append("import 'package:todo_flutter/todo_flutter.dart';").append("\n\n")
                 //class name
                 .append("class ").append(bean.getPageClsName()).append(" extends NavigatorStatefulPage {").append("\n")
                 .append("  const ").append(bean.getPageClsName()).append("(").append("\n")
@@ -110,7 +109,7 @@ public class ModulePageAction extends AnAction {
                 .append("class ").append(bean.getPageClsName()).append("State extends CommonPage<").append(bean.getPageClsName()).append(">\n")
                 .append("with NavigatorPageLifecycleMixin {\n")
                 .append("  @override").append("\n")
-                .append("  Widget baseBuild(BuildContext context) => const SizedBox(child: CommonText('把这里的CommonText替换为页面代码'));").append("\n\n")
+                .append("  Widget baseBuild(BuildContext context) => SizedBox(child: CommonText('把这里的CommonText替换为页面代码'));").append("\n\n")
 
                 .append("  @override").append("\n")
                 .append("  void initState() {").append("\n").append("    super.initState();\n").append("  }\n\n")
@@ -131,18 +130,17 @@ public class ModulePageAction extends AnAction {
         //import
         StringBuilder sb = new StringBuilder();
         sb.append("import 'package:todo_flutter/todo_flutter.dart';").append("\n\n")
-                .append("import 'package:请自行在此输入项目名称/service/network/api_provider.dart';\n\n")
                 //class name
                 .append("class ").append(bean.getApiClsName()).append("{").append("\n")
                 .append("//在此填写api url 示例：\n").append("  static const String dataDic = '/e-system/dict/data/type/';").append("\n")
                 .append("}").append("\n\n")
-                .append("class ExampleRequest extends ApiRequest<Map<String, dynamic>> {\n")
-                .append("  ExampleRequest(Map<String, dynamic>? params) : super(params);\n\n")
-                .append("  @override\n")
-                .append("  RequestMethod get method => RequestMethod.get;\n\n")
-                .append("  @override\n")
-                .append("  String get url =>").append(bean.getApiClsName()).append(".dataDic;\n")
-                .append("}").append("\n");
+                .append("//class ExampleRequest extends ApiRequest<Map<String, dynamic>> {\n")
+                .append("//  ExampleRequest(Map<String, dynamic>? params) : super(params);\n\n")
+                .append("//  @override\n")
+                .append("//  RequestMethod get method => RequestMethod.get;\n\n")
+                .append("//  @override\n")
+                .append("//  String get url =>").append(bean.getApiClsName()).append(".dataDic;\n")
+                .append("//}").append("\n");
         return sb.toString();
     }
 }
