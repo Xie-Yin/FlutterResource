@@ -38,7 +38,7 @@ public class IconfontAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent event) {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         if (project == null) return;
-        Config config = new Config();
+        Config config = Config.init(project);
         Map<String, Object> map = Config.parserYaml(project);
         Map<String, Object> flutter = (Map<String, Object>) map.get("flutter");
         if (flutter == null) {
