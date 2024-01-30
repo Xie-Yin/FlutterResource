@@ -7,6 +7,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,16 +34,22 @@ public class Config {
      * 配置生成的文件名和类名
      */
     private String prefix;
+    /**
+     * 忽略的文件目录(名称相等)
+     */
+    private List<String> ignoreDir;
 
     public static Config init(Project project) {
         Map<String, Object> map = parserYaml(project);
         Object isModule = getYamlSetting(map, "isModule");
         Object prefix = getYamlSetting(map, "prefix");
+        Object ignoreDir = getYamlSetting(map, "ignoreDir");
         //生成配置
         Config config = new Config();
         config.setModuleName(map.get("name").toString());
         config.setModule(isModule == null || (Boolean) isModule);
         config.setPrefix(prefix == null ? null : prefix.toString());
+        config.setIgnoreDir(ignoreDir == null ? null : (List<String>) ignoreDir);
         return config;
     }
 
@@ -92,5 +99,13 @@ public class Config {
 
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+    }
+
+    public List<String> getIgnoreDir() {
+        return ignoreDir;
+    }
+
+    public void setIgnoreDir(List<String> ignoreDir) {
+        this.ignoreDir = ignoreDir;
     }
 }

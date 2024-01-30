@@ -10,6 +10,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.PsiManager;
 import com.intellij.util.ThrowableRunnable;
+import com.odbpo.flutter.common.Config;
 import com.odbpo.flutter.common.Constants;
 
 import java.io.File;
@@ -32,25 +33,30 @@ public class FileUtil {
     /**
      * 获取目录下的所有文件
      */
-    public static Collection<VirtualFile> getDirFile(Project project, String dir) {
+    public static Collection<VirtualFile> getDirFile(Project project, Config config, String dir) {
         VirtualFile libFile = ProjectUtil.guessProjectDir(project).findChild(dir);
         if (libFile == null || !libFile.exists()) {
             NotificationUtil.showNotify(project, "Error: [" + dir + "] directory not found!");
             return null;
         }
         Collection<VirtualFile> files = new ArrayList<>();
-        recursiveGetAllFiles(files, libFile);
+        recursiveGetAllFiles(files, config, libFile);
         return files;
     }
 
     /**
      * 递归获取文件
      */
-    private static void recursiveGetAllFiles(Collection<VirtualFile> list, VirtualFile file) {
+    private static void recursiveGetAllFiles(Collection<VirtualFile> list, Config config, VirtualFile file) {
         VirtualFile[] children = file.getChildren();
         for (VirtualFile child : children) {
             if (child.isDirectory()) {
-                recursiveGetAllFiles(list, child);
+                if (config.getIgnoreDir() != null) {
+                    if (config.getIgnoreDir().contains(child.getName())) {
+                        continue;
+                    }
+                }
+                recursiveGetAllFiles(list, config, child);
             } else {
                 if (!child.getName().startsWith(".")) {
                     list.add(child);

@@ -33,7 +33,7 @@ public class RouteAction extends AnAction {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         if (project == null) return;
         Config config = Config.init(project);
-        Collection<VirtualFile> dartFiles = FileUtil.getDirFile(project, Constants.LIB_DIR);
+        Collection<VirtualFile> dartFiles = FileUtil.getDirFile(project, config, Constants.LIB_DIR);
         if (dartFiles == null) {
             NotificationUtil.showNotify(project, "No *page file need to be generate！");
             return;

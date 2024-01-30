@@ -36,7 +36,7 @@ public class AssetsAction extends AnAction {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         if (project == null) return;
         Config config = Config.init(project);
-        Collection<VirtualFile> assetsFiles = FileUtil.getDirFile(project, Constants.ASSETS_DIR);
+        Collection<VirtualFile> assetsFiles = FileUtil.getDirFile(project, config, Constants.ASSETS_DIR);
         if (assetsFiles == null) {
             NotificationUtil.showNotify(project, "No assets file need to be generate！");
             return;
