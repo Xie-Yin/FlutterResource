@@ -7,11 +7,13 @@ import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.ThrowableRunnable;
+import com.odbpo.flutter.common.Config;
 import com.odbpo.flutter.common.Constants;
 import com.odbpo.flutter.util.FileUtil;
 import com.odbpo.flutter.util.NotificationUtil;
 import com.odbpo.flutter.util.StringUtil;
 
+import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -30,6 +32,7 @@ public class RouteAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent event) {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         if (project == null) return;
+        Config config = new Config();
         Collection<VirtualFile> dartFiles = FileUtil.getDirFile(project, Constants.LIB_DIR);
         if (dartFiles == null) {
             NotificationUtil.showNotify(project, "No *page file need to be generate！");
@@ -42,19 +45,21 @@ public class RouteAction extends AnAction {
             NotificationUtil.showNotify(project, "No *page file need to be generate！");
             return;
         }
-        generateRoute(project, dartFiles);
+        generateRoute(project, config, dartFiles);
         NotificationUtil.showNotify(project, "Generate route successful！");
     }
 
     /**
      * 生成路由文件
      */
-    private void generateRoute(Project project, Collection<VirtualFile> dartFiles) {
+    private void generateRoute(Project project, Config config, Collection<VirtualFile> dartFiles) {
         VirtualFile dirFile = FileUtil.createDir(project, Constants.ROUTE_DIR);
         if (dirFile == null) return;
         try {
-            String moduleName = FileUtil.getModuleName(project);
-            String prefix = FileUtil.getGeneratePrefix(project, moduleName);
+            String prefix = config.getPrefix();
+            if (TextUtils.isEmpty(config.getPrefix())) {
+                prefix = config.getModuleName();
+            }
             //生成代码
             String fileName = prefix + "_route.dart";
             String code = createCode(prefix, dartFiles);

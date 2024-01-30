@@ -12,13 +12,12 @@ import com.intellij.psi.PsiManager;
 import com.intellij.util.ThrowableRunnable;
 import com.odbpo.flutter.common.Constants;
 
-import org.yaml.snakeyaml.Yaml;
-
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 
 /**
  * createDate: 2022/11/16 on 16:22
@@ -81,54 +80,6 @@ public class FileUtil {
             e.printStackTrace();
         }
         return libFile.findFileByRelativePath(Constants.GENERATED_DIR + File.separator + dir);
-    }
-
-    /**
-     * 获取模块名称
-     */
-    public static String getModuleName(Project project) {
-        return parserYaml(project).get("name").toString();
-    }
-
-    /**
-     * 如果yaml没有配置，则使用moduleName
-     */
-    public static String getGeneratePrefix(Project project, String moduleName) {
-        Object prefix = FileUtil.getYamlSetting(project, "prefix");
-        return (prefix == null || prefix.toString().isEmpty()) ? moduleName : prefix.toString();
-    }
-
-    /**
-     * 如果yaml没有配置，默认为true
-     */
-    public static Boolean isModule(Project project) {
-        Object isModule = FileUtil.getYamlSetting(project, "isModule");
-        return isModule == null || (Boolean) isModule;
-    }
-
-    /**
-     * 获取配置的前缀
-     */
-    private static Object getYamlSetting(Project project, String key) {
-        Map<String, Object> map = parserYaml(project);
-        if (map == null) return null;
-        Object xieYin = map.get("flutter_res");
-        if (xieYin == null) return null;
-        return ((Map<String, Object>) xieYin).get(key);
-    }
-
-    /**
-     * 解析yaml文件
-     */
-    public static Map<String, Object> parserYaml(Project project) {
-        try {
-            Yaml yaml = new Yaml();
-            FileInputStream inputStream = new FileInputStream(project.getBasePath() + File.separator + Constants.PUBSPEC_FILE);
-            return yaml.load(inputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     /**

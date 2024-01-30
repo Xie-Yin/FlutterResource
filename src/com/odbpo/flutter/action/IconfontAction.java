@@ -12,11 +12,13 @@ import com.intellij.psi.PsiManager;
 import com.intellij.util.ThrowableRunnable;
 import com.odbpo.flutter.bean.IconfontBean;
 import com.odbpo.flutter.bean.IconfontJsonBean;
+import com.odbpo.flutter.common.Config;
 import com.odbpo.flutter.common.Constants;
 import com.odbpo.flutter.util.FileUtil;
 import com.odbpo.flutter.util.NotificationUtil;
 import com.odbpo.flutter.util.StringUtil;
 
+import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -36,7 +38,8 @@ public class IconfontAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent event) {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         if (project == null) return;
-        Map<String, Object> map = FileUtil.parserYaml(project);
+        Config config = new Config();
+        Map<String, Object> map = Config.parserYaml(project);
         Map<String, Object> flutter = (Map<String, Object>) map.get("flutter");
         if (flutter == null) {
             NotificationUtil.showNotify(project, "No iconfont file need to be generate！");
@@ -56,19 +59,21 @@ public class IconfontAction extends AnAction {
                 iconfontList.add(new IconfontBean(family, asset));
             }
         }
-        generateIconfont(project, iconfontList);
+        generateIconfont(project, config, iconfontList);
         NotificationUtil.showNotify(project, "Generate Iconfont successful！");
     }
 
     /**
      * 生成资源文件
      */
-    private void generateIconfont(Project project, List<IconfontBean> iconfontList) {
+    private void generateIconfont(Project project, Config config, List<IconfontBean> iconfontList) {
         VirtualFile dirFile = FileUtil.createDir(project, Constants.ASSETS_DIR);
         if (dirFile == null) return;
         try {
-            String moduleName = FileUtil.getModuleName(project);
-            String prefix = FileUtil.getGeneratePrefix(project, moduleName);
+            String prefix = config.getPrefix();
+            if (TextUtils.isEmpty(config.getPrefix())) {
+                prefix = config.getModuleName();
+            }
             String fileName = prefix + "_icon.dart";
             String code = createCode(project, prefix, iconfontList);
             WriteAction.run((ThrowableRunnable<Throwable>) () -> FileUtil.writeFile(project, dirFile, fileName, code));
