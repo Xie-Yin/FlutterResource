@@ -29,6 +29,9 @@ flutter_res:
   isModule: false
   # 配置生成的文件名和类名
   prefix: hsh
+  # 忽略需要扫描的文件夹名称
+  ignoreDir:
+    - images-zh
 ```
 - 如果`isModule`没有配置，默认值为`true`
 - 如果`prefix`没有配置，默认值为`pubspec.yaml`中的`name`字段
